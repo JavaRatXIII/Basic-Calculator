@@ -4,67 +4,63 @@ package BasicCalculator;
  */
 public class CalcFunctions {
     
-    String text;
-    String n1 = "0";
-    String n2 = "0";
-    String operation = "";
+    private String _textResult;
+    private String _firstOperand = "0";
+    private String _secondOperand = "0";
+    private String _operation = "";
     
     public CalcFunctions (String t){
-        text = t;
+        _textResult = t;
     }
     
-    public String insertNum(String num)
+    public String InsertNum(String num)
     {
-        if(text.equals("0"))
+        if(_textResult.equals("0"))
         {
-            text = num;
+            _textResult = num;
             return(num);
         }
-        text = text + num;
-        return text;
+        
+        _textResult = _textResult + num;
+        return _textResult;
     }
     
-    public String clear()
+    public String Clear()
     {
-        text = "0";
-        return text;
+        _textResult = "0";
+        return _textResult;
     }
     
-    public void calcu(String oper)
+    public void Calculate(String operation)
     {
-        n1 = text;
-        text = "0";
-        operation = oper;
+        _firstOperand = _textResult;
+        _textResult = "0";
+        _operation = operation;
     }
     
     public String Equal()
     {
-        String res = "";
-        n2 = text;
-        text = "0";
+        _secondOperand = _textResult;
+        _textResult = "0";
         Double result = 0.0;
-        if(operation.equals("+"))
+        if(_operation.equals("+"))
         {
-            result = Double.parseDouble(n1) + Double.parseDouble(n2);
-            res = ""+result;
+            result = Double.parseDouble(_firstOperand) + Double.parseDouble(_secondOperand);
         }
-        else if(operation.equals("-"))
+        else if(_operation.equals("-"))
         {
-            result = Double.parseDouble(n1) - Double.parseDouble(n2);
-            res = ""+result;
+            result = Double.parseDouble(_firstOperand) - Double.parseDouble(_secondOperand);
         }
-        else if(operation.equals("/"))
+        else if(_operation.equals("/"))
         {
-            result = Double.parseDouble(n1) / Double.parseDouble(n2);
-            res = ""+result;
+            result = Double.parseDouble(_firstOperand) / Double.parseDouble(_secondOperand);
         }
         else
         {
-            result = Double.parseDouble(n1) * Double.parseDouble(n2);
-            res = ""+result;
+            result = Double.parseDouble(_firstOperand) * Double.parseDouble(_secondOperand);
         }
-        text = res;
-        return res;
+        _textResult = result.toString();
+        return result.toString();
     }
     
 }
